@@ -23,6 +23,7 @@ import axios from "axios";
 import Pagination from "@mui/material/Pagination";
 import { Autoplay } from "swiper";
 import "swiper/css";
+import nitkLogo from "./assets/nitkLogo.png";
 const currencies = [
   {
     value: "100000",
@@ -42,7 +43,6 @@ const currencies = [
   },
 ];
 function App() {
-  const [age, setAge] = React.useState("");
   const [clusterList, setClusterList] = React.useState([]);
   const [clusterId, setClusterId] = React.useState("");
   const [sponsersList, setSponsersList] = React.useState([]);
@@ -51,6 +51,7 @@ function App() {
   const [amount, setAmount] = React.useState(null);
   const [batch, setBatch] = React.useState(null);
   const [branch, setBranch] = React.useState(null);
+  const [phoneNumber, setPhoneNumber] = React.useState(null);
   const [dob, setDob] = React.useState(
     dayjs("2014-08-18T21:11:54").format("DD/MM/YYYY") ?? ""
   );
@@ -77,6 +78,10 @@ function App() {
   const handleSetBranch = (event) => {
     setBranch(event.target.value);
   };
+
+  const handleSetPhoneNumber = (event) => {
+    setPhoneNumber(event.target.value);
+  };
   const validation = () => {
     if (name == null) {
       alert("Please enter name");
@@ -95,6 +100,9 @@ function App() {
       return false;
     } else if (clusterId == "") {
       alert("Please select campus");
+      return false;
+    } else if (phoneNumber == null) {
+      alert("Please select Phone Number");
       return false;
     }
     return true;
@@ -147,10 +155,11 @@ function App() {
   const postDonationDetails = (clusterId) => {
     const data = {
       name: name,
-      amount: amount,
+      amount: amount * 100,
       batch: batch,
       branch: branch,
       dob: dob.toString(),
+      phone: phoneNumber,
     };
     if (validation() == true) {
       axios
@@ -196,13 +205,18 @@ function App() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" style={{ backgroundColor: "#ffff" }}>
           <Toolbar>
+            <img height={32} src={nitkLogo}></img>
             <Typography
-              style={{ color: "#000000", fontWeight: "bold" }}
+              style={{
+                color: "#000000",
+                fontWeight: "bold",
+                marginLeft: "8px",
+              }}
               variant="h6"
               component="div"
               sx={{ flexGrow: 1 }}
             >
-              NITK Connect
+              NITKonnect '23
             </Typography>
             <div style={{ padding: "12px" }}>
               <TextField
@@ -231,7 +245,6 @@ function App() {
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}
-          // modules={[Pagination]}
           className="mySwiper"
           style={{ marginTop: "16px" }}
         >
@@ -314,19 +327,17 @@ function App() {
                   </div>
                   <div>
                     <TextField
-                      id="outlined-select-currency"
-                      select
+                      id="outlined-basic"
                       label="Amount"
-                      defaultValue="Select Amount"
-                      helperText="Please select your Donation amount"
+                      variant="outlined"
                       onChange={handleSetAmount}
-                    >
-                      {currencies.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
+                    />
+                    <TextField
+                      id="outlined-basic"
+                      label="Phone Number"
+                      variant="outlined"
+                      onChange={handleSetPhoneNumber}
+                    />
                   </div>
                   <Button
                     variant="contained"
