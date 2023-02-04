@@ -238,26 +238,28 @@ function App() {
         </AppBar>
         <Swiper
           autoplay={{
-            delay: 2500,
+            delay: 8000,
             disableOnInteraction: false,
           }}
+          spaceBetween={250}
+          slidesPerView={1}
           modules={[Autoplay]}
           className="mySwiper"
-          style={{ marginTop: "16px" }}
+          style={{ marginTop: "6px" }}
         >
           <SwiperSlide>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <img
-                height={600}
+                style={{ maxHeight: "600px" }}
                 src="https://media.esamudaay.com/user-media/WhatsApp_Image_2023-02-03_at_21.02.00.jpeg"
               ></img>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          {/* <SwiperSlide>
             {" "}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <img
-                height={600}
+                style={{ maxHeight: "600px" }}
                 src="https://media.esamudaay.com/user-media/WhatsApp_Image_2023-02-03_at_21.01.59_1.jpeg"
               ></img>
             </div>
@@ -266,8 +268,35 @@ function App() {
             {" "}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <img
-                height={600}
+                style={{ maxHeight: "600px" }}
                 src="https://media.esamudaay.com/user-media/WhatsApp_Image_2023-02-03_at_21.01.59.jpeg"
+              ></img>
+            </div>
+          </SwiperSlide> */}
+          <SwiperSlide>
+            {" "}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img
+                style={{ maxHeight: "600px", width: "100%" }}
+                src="https://media.esamudaay.com/user-media/1_3.png"
+              ></img>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            {" "}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img
+                style={{ maxHeight: "600px", width: "100%" }}
+                src="https://media.esamudaay.com/user-media/2_3.png"
+              ></img>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            {" "}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img
+                style={{ maxHeight: "600px", width: "100%" }}
+                src="https://media.esamudaay.com/user-media/3_3.png"
               ></img>
             </div>
           </SwiperSlide>
