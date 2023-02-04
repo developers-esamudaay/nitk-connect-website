@@ -144,9 +144,6 @@ function App() {
       )
       .then((response) => {
         setSponsersList(response.data.results);
-        console.log(
-          `sponsers list = > ${JSON.stringify(response.data.results)}`
-        );
       })
       .catch(function (error) {
         alert("Unauthorize or slow internet");
